@@ -63,8 +63,14 @@ on seeing the actual vehicle, and it removes the attribution requirement.
 **Do not use images from Google Images or manufacturer press kits.** They are
 copyrighted, and after handover the liability is yours.
 
-**Do not delete the photo credits block in the footer** while any CC BY or
-CC BY-SA photo is still in use — attribution is a condition of those licences.
+**Do not delete `credits.html` or the footer link to it** while the Classic 350,
+NTorq 125 or Xpulse 200 photos are in use — attribution is a condition of their
+CC BY / CC BY-SA licences, and removing it turns the use into infringement.
+
+All other photography on the site is CC0 or public domain and needs no credit.
+Once you replace those three vehicle photos with your own, delete their entries
+from `credits.html`; when all three are gone you can delete the page and the
+footer paragraph entirely.
 
 ### 2b. Pick a theme, then lock it in
 

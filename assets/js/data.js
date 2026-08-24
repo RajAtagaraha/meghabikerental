@@ -153,27 +153,27 @@ const CATEGORIES = [
 
 const PLACES = [
   {
-    name: 'Dawki & the Umngot river',
-    image: 'umngot-river-dawki.jpg',
-    distance: '82 km from Shillong',
-    blurb: 'Water so clear the boats look like they float on air. A long, rewarding day ride.',
-  },
-  {
     name: 'Nohkalikai Falls',
     image: 'nohkalikai-falls.jpg',
     distance: '54 km from Shillong',
     blurb: "India's tallest plunge waterfall, dropping into a green pool below Cherrapunji.",
   },
   {
-    name: 'Living root bridges',
-    image: 'living-root-bridge.jpg',
-    distance: '60 km from Shillong',
-    blurb: 'Bridges grown, not built, from the roots of rubber fig trees over Khasi hill streams.',
+    name: 'Lyngksiar Falls, Sohra',
+    image: 'lyngksiar-falls.jpg',
+    distance: '56 km from Shillong',
+    blurb: 'A wide curtain of water in Sohra, quieter than the headline falls and easy to reach.',
   },
   {
-    name: 'Shillong & the Khasi hills',
-    image: 'shillong-city.jpg',
+    name: 'Smit village',
+    image: 'smit-village.jpg',
+    distance: '11 km from Shillong',
+    blurb: 'The Khasi cultural seat, terraced fields and pine ridges. The perfect first short ride.',
+  },
+  {
+    name: "Ward's Lake & Shillong",
+    image: 'wards-lake.jpg',
     distance: 'Start here',
-    blurb: 'Pine ridges, viewpoints and market lanes. The easiest first ride to get used to the bike.',
+    blurb: 'Boats, a wrought-iron bridge and pine slopes in the middle of town. Easy city loop.',
   },
 ];

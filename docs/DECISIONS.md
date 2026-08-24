@@ -236,3 +236,56 @@ was added to the LocalBusiness structured data now that the number is real.
 
 **No placeholder contact values remain in any site file** — verified by grep for
 `9XXXX`, `919XXXXXXXXX`, `gail.com`, `TBD@` and `email@example`.
+
+## 2026-08-24 — Landscapes moved to CC0; bike credits moved to a credits page
+
+**Context.** Owner asked for the footer photo-credits paragraph to be removed and
+for attribution-free bike photos to be found.
+
+**What was searched.** Commons filtered to CC0 / public-domain only. Result: of
+the five vehicles with photos, **only Meteor 350 and Himalayan have CC0 sources**
+— the two already in use. There is no CC0 photograph of the Classic 350,
+NTorq 125 or Xpulse 200. Openverse's FZ-S results are all NonCommercial.
+
+**Decision.**
+1. **All landscape photography replaced with CC0 / public-domain images**, so it
+   needs no attribution at all: Shillong Peak (hero, CC0), Nohkalikai Falls (PD),
+   Ward's Lake (CC0), Lyngksiar Falls Sohra (CC0), Smit village (CC0).
+2. The three CC BY / CC BY-SA **vehicle** photos were kept, with attribution moved
+   to `credits.html` and a one-line footer pointer. CC BY-SA 4.0 §3(a)(2) permits
+   satisfying attribution "by providing a URI or hyperlink to a resource that
+   includes the required information", so a linked credits page is compliant.
+
+**The credits could not simply be deleted.** Attribution is a condition of those
+licences; removing it terminates the licence and makes the use infringement on a
+commercial site. Footer credit text went from ~700 to 263 characters.
+
+**Consequences.** Lost the Dawki/Umngot and living-root-bridge photos — no CC0
+equivalent exists — so the destination cards are now Nohkalikai, Lyngksiar, Smit
+and Ward's Lake. To reach zero attribution entirely, the Classic 350, NTorq and
+Xpulse must revert to illustrations (`photo: false`) or be re-shot by the owner.
+
+## 2026-08-24 — Responsive audit across 18 viewports, 4 pages
+
+**Method.** Real device emulation over the Chrome DevTools Protocol
+(`Emulation.setDeviceMetricsOverride`), not window resizing — window sizing
+ignores the viewport meta tag and headless Chrome clamps width to 500px, which
+had produced a false "overflow" reading in an earlier check. Script:
+`scratchpad/resp.mjs`. 280px (Galaxy Fold folded) through 2560px, plus phone
+landscape and both iPad orientations.
+
+**Real bugs found and fixed:**
+1. **Horizontal scroll at 280px** — `minmax(270px, 1fr)` plus 40px page padding
+   needs 310px. Fixed with `minmax(min(270px, 100%), 1fr)` on all three grids.
+2. **Tap targets below 44pt** — filter chips (41px), logo (28px), nav links
+   (25px), footer links (16px), FAB (43px). All raised to 44px+.
+3. **Text below 12px** — `.eyebrow` 11.8px, `.card__tag` and `.place__dist`
+   11.2px. Raised to 12–12.5px.
+
+**Result: 0 hard failures across all 72 page/viewport combinations.** One
+advisory remains: the "Photo on request" badge is 40px tall, under Apple's 44pt
+guidance but well clear of WCAG 2.5.8 AA (24px). Kept at 40px so it does not
+dominate the card image.
+
+**Caching gotcha:** the CDP harness must set `Network.setCacheDisabled` — a first
+re-run reported identical results because Chrome served the old stylesheet.

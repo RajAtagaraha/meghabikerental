@@ -41,6 +41,7 @@ directory as-is. No build command, no output directory.
 index.html              Homepage — hero, fleet, how it works, pickup, FAQ
 terms.html              Terms & Conditions
 privacy.html            Privacy Policy
+credits.html            Photo attribution (noindex). Licence requirement.
 robots.txt              Crawler rules
 sitemap.xml             Three URLs; update lastmod when pages change
 assets/css/styles.css   Layout and components. Semantic tokens in :root.
@@ -74,9 +75,10 @@ These exist to stop confident wrong answers. They matter more than style.
 6. **Images must carry a licence you can name.** Photos currently in use come
    from Wikimedia Commons under CC0 / CC BY / CC BY-SA. Never add an image found
    through a general image search or a manufacturer press kit.
-   **The credits block in the footer of index.html is a licence condition for the
-   CC BY and CC BY-SA photos — do not delete or trim it** while those photos are
-   in use. If you swap in an owner-supplied photo, remove only that photo's line.
+   **`credits.html` and the footer link to it are a licence condition** for the
+   three CC BY / CC BY-SA vehicle photos (Classic 350, NTorq 125, Xpulse 200).
+   Do not delete either while those photos are in use. All other photography is
+   CC0 or public domain and needs no attribution.
 7. **Never show a bike we do not rent.** A card's photo must be the actual model.
    Three vehicles (Yamaha FZ-S 155, Yamaha Ray ZR 125, Hero Xtreme 125R) have no
    usable photo under any commercial-friendly licence — this was searched twice,
@@ -115,6 +117,12 @@ These exist to stop confident wrong answers. They matter more than style.
 - English (en-IN) spelling: "licence" the noun, "tyre", "kerb".
 - Every `<img>` needs a real `alt`, explicit `width`/`height`, and `loading="lazy"`
   below the fold — this protects the Core Web Vitals that SEO depends on.
+- **Responsive floor is 280px** (Galaxy Fold folded). Any new grid must use
+  `minmax(min(Npx, 100%), 1fr)`, never a bare `minmax(Npx, 1fr)`, or it will
+  overflow there.
+- **Tap targets: 44px minimum height** on anything clickable. Body and label text
+  never below 12px. Re-run `scratchpad/resp.mjs` after layout changes — it drives
+  real device emulation over CDP and must report 0 hard failures.
 
 ## SEO — do not regress these
 

@@ -80,7 +80,7 @@ p  { margin: 0 0 1em; }
 
 .eyebrow {
   display: inline-block;
-  font-size: .74rem; font-weight: 700; letter-spacing: .12em;
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--accent-2);
   margin-bottom: 10px;
 }
@@ -106,6 +106,7 @@ p  { margin: 0 0 1em; }
 }
 .logo {
   display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px;
   font-weight: 800; font-size: 1.05rem; letter-spacing: -.02em;
   color: var(--ink); text-decoration: none;
 }
@@ -114,6 +115,7 @@ p  { margin: 0 0 1em; }
 
 .nav { display: none; gap: 28px; }
 .nav a {
+  display: inline-flex; align-items: center; min-height: 44px;
   color: var(--ink-soft); text-decoration: none;
   font-size: .93rem; font-weight: 550;
 }
@@ -124,7 +126,7 @@ p  { margin: 0 0 1em; }
 /* --- buttons ------------------------------------------------------------ */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-  padding: 12px 20px;
+  min-height: 46px; padding: 12px 22px;
   border: 1px solid transparent; border-radius: 999px;
   font: inherit; font-size: .93rem; font-weight: 650;
   text-decoration: none; cursor: pointer;
@@ -182,7 +184,7 @@ p  { margin: 0 0 1em; }
   display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
 }
 .filter {
-  padding: 8px 16px; border-radius: 999px;
+  min-height: 44px; padding: 8px 18px; border-radius: 999px;
   border: 1px solid var(--card-border); background: var(--surface-alpha);
   backdrop-filter: var(--surface-blur); -webkit-backdrop-filter: var(--surface-blur);
   font: inherit; font-size: .88rem; font-weight: 600; color: var(--ink-soft);
@@ -196,7 +198,7 @@ p  { margin: 0 0 1em; }
 /* --- bike grid ---------------------------------------------------------- */
 .grid {
   display: grid; gap: 22px;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
 }
 
 .card {
@@ -228,7 +230,7 @@ p  { margin: 0 0 1em; }
   position: absolute; top: 12px; left: 12px;
   padding: 5px 11px; border-radius: 999px;
   background: rgba(255,255,255,.94);
-  font-size: .7rem; font-weight: 700; letter-spacing: .06em;
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em;
   text-transform: uppercase; color: var(--accent);
 }
 .card__tag--out { background: rgba(16,32,26,.82); color: #fff; }
@@ -259,7 +261,7 @@ p  { margin: 0 0 1em; }
 /* --- steps -------------------------------------------------------------- */
 .steps {
   display: grid; gap: 20px; padding: 0; margin: 0; list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   counter-reset: step;
 }
 .steps li {
@@ -372,8 +374,8 @@ p  { margin: 0 0 1em; }
 /* --- floating whatsapp -------------------------------------------------- */
 .fab {
   position: fixed; right: 18px; bottom: 18px; z-index: 90;
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 13px 19px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 48px; padding: 13px 20px; border-radius: 999px;
   background: var(--accent); color: var(--accent-ink);
   font-weight: 700; font-size: .92rem; text-decoration: none;
   box-shadow: 0 8px 26px rgba(180,80,47,.40);
@@ -437,7 +439,7 @@ p  { margin: 0 0 1em; }
 
 .places {
   display: grid; gap: 18px; padding: 0; margin: 0; list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
 }
 .place {
   position: relative; overflow: hidden;
@@ -459,7 +461,7 @@ p  { margin: 0 0 1em; }
 .place__body { padding: 20px 20px 22px; }
 .place__dist {
   display: inline-block; margin-bottom: 8px;
-  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  font-size: .75rem; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: var(--on-photo-accent);
 }
 .place h3 { color: #fff; margin-bottom: 6px; font-size: 1.12rem; }
@@ -494,12 +496,29 @@ p  { margin: 0 0 1em; }
   position: absolute; right: 10px; bottom: 10px;
   padding: 5px 10px; border-radius: 7px;
   background: rgba(var(--hero-scrim),.80); color: #fff;
-  font-size: .68rem; font-weight: 600; letter-spacing: .03em;
+  font-size: .75rem; font-weight: 600; letter-spacing: .03em;
   text-decoration: none;
   transition: background .2s var(--ease);
+}
+a.card__note {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 6px 12px;
 }
 a.card__note:hover { background: var(--accent); color: var(--accent-ink); }
 
 /* keep the price block pinned to the bottom so buttons align across a row */
 .card__blurb { flex: 0 0 auto; }
 .price { margin-top: auto; }
+
+/* ==========================================================================
+   Touch targets — footer and base links are navigation, not body copy
+   ========================================================================== */
+
+.footer li a,
+.footer__base a {
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding-block: 4px;
+}
+.footer__base { row-gap: 4px; }
+
+/* Comfortable tap row for the FAQ disclosures */
+.faq summary { min-height: 52px; display: flex; align-items: center; }

@@ -188,7 +188,10 @@
   border-radius: 999px; margin-bottom: 14px; mix-blend-mode: normal;
 }
 [data-finish="crystal"] .band { position: relative; overflow: hidden; }
-[data-finish="crystal"] .header { backdrop-filter: blur(20px) saturate(180%); }
+[data-finish="crystal"] .header {
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
 [data-finish="crystal"] .card:hover {
   border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, #fff 14%, transparent) inset;
@@ -322,6 +325,7 @@
 [data-palette="gunmetal"] .card__tag,
 [data-palette="dusk"] .card__tag {
   background: rgba(0,0,0,.62); color: var(--accent-2);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -374,6 +378,7 @@
   padding: 9px 15px; border-radius: 999px;
   border: 1px solid var(--card-border);
   background: color-mix(in srgb, var(--surface) 84%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   color: var(--ink); font: inherit; font-size: .82rem; font-weight: 650;
@@ -389,6 +394,7 @@
   padding: 18px; border-radius: 16px;
   border: 1px solid var(--card-border);
   background: color-mix(in srgb, var(--surface) 92%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
   backdrop-filter: blur(24px) saturate(170%);
   -webkit-backdrop-filter: blur(24px) saturate(170%);
   box-shadow: var(--shadow-lg);
@@ -434,4 +440,55 @@
 @media (max-width: 560px) {
   .tp { top: auto; bottom: 84px; right: 14px; }
   .tp__panel { top: auto; bottom: calc(100% + 10px); }
+}
+
+/* ==========================================================================
+   5. Fallback for engines without color-mix()  (Safari < 16.2, Firefox < 113)
+   --------------------------------------------------------------------------
+   `background: var(--surface-alpha)` where the token holds an unsupported
+   color-mix() is invalid at computed-value time, which resolves to `initial`
+   — i.e. TRANSPARENT. Every card would lose its background. An earlier
+   fallback declaration does not help for that failure mode, so the tokens are
+   forced to solid values here instead.
+   ========================================================================== */
+
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  [data-finish="crystal"],
+  [data-finish="water"],
+  [data-finish="vapour"],
+  [data-finish="metal"] {
+    --surface-alpha: var(--surface);
+    --card-border: var(--line);
+  }
+
+  /* derived light accent used on photo scrims */
+  :root { --on-photo-accent: var(--accent-2); }
+
+  /* decorative sheens degrade to nothing rather than a broken paint */
+  [data-finish="crystal"] .card::before,
+  [data-finish="crystal"] .panel::before,
+  [data-finish="crystal"] .band::before,
+  [data-finish="water"] .card::after,
+  [data-finish="metal"] .card::before,
+  [data-finish="metal"] .panel::before { display: none; }
+
+  [data-finish="water"] body,
+  [data-finish="vapour"] body { background-image: none; }
+
+  [data-finish="metal"] .card,
+  [data-finish="metal"] .panel,
+  [data-finish="metal"] .steps li { background-image: none; }
+
+  /* warning notes keep a readable solid treatment */
+  [data-palette="obsidian"] .note, [data-palette="abyss"] .note,
+  [data-palette="midnight"] .note, [data-palette="carbon"] .note,
+  [data-palette="espresso"] .note, [data-palette="burgundy"] .note,
+  [data-palette="gunmetal"] .note, [data-palette="dusk"] .note {
+    background: var(--bg-2); border-color: var(--line); color: #f0c98a;
+  }
+  .note { background: var(--bg-2); border-color: var(--line); color: var(--ink); }
+
+  .tp__toggle, .tp__panel { background: var(--surface); }
+  .tp__opt:hover { background: var(--bg-2); }
+  .tp__opt[aria-pressed="true"] { background: var(--bg-2); }
 }

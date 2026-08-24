@@ -41,7 +41,6 @@ directory as-is. No build command, no output directory.
 index.html              Homepage — hero, fleet, how it works, pickup, FAQ
 terms.html              Terms & Conditions
 privacy.html            Privacy Policy
-credits.html            Photo attribution (noindex). Licence requirement.
 robots.txt              Crawler rules
 sitemap.xml             Three URLs; update lastmod when pages change
 assets/css/styles.css   Layout and components. Semantic tokens in :root.
@@ -49,8 +48,8 @@ assets/css/themes.css   12 palettes + 5 finishes, plus the picker's own styles.
 assets/js/theme.js      Theme picker. PREVIEW TOOL — delete before handover.
 assets/js/data.js       Business details + fleet + prices. THE file owners edit.
 assets/js/main.js       Renders cards, filtering, WhatsApp link building.
-assets/images/bikes/    One image per vehicle, filename matches data.js
-                        5 are .jpg photos; 3 are .svg illustrations (photo: false)
+assets/images/bikes/    Photos only for vehicles with photo:true (currently 2).
+                        The other six render inline SVG art from main.js.
 assets/images/places/   Destination + hero photography, all CC-licensed
 ```
 
@@ -75,16 +74,15 @@ These exist to stop confident wrong answers. They matter more than style.
 6. **Images must carry a licence you can name.** Photos currently in use come
    from Wikimedia Commons under CC0 / CC BY / CC BY-SA. Never add an image found
    through a general image search or a manufacturer press kit.
-   **`credits.html` and the footer link to it are a licence condition** for the
-   three CC BY / CC BY-SA vehicle photos (Classic 350, NTorq 125, Xpulse 200).
-   Do not delete either while those photos are in use. All other photography is
-   CC0 or public domain and needs no attribution.
+   **Every image on this site is CC0 or public domain, and there is deliberately
+   no attribution anywhere.** Do not add an image that requires credit — if a
+   photo would need an attribution line, it does not go on this site. The owner
+   removed the credits block for this reason.
 7. **Never show a bike we do not rent.** A card's photo must be the actual model.
-   Three vehicles (Yamaha FZ-S 155, Yamaha Ray ZR 125, Hero Xtreme 125R) have no
-   usable photo under any commercial-friendly licence — this was searched twice,
-   see DECISIONS.md — and use `photo: false`, which renders a "Photo on request"
+   Only the Meteor 350 and Himalayan have CC0 photographs; the other six use
+   `photo: false`, which renders the inline illustration plus a "Photo on request"
    badge linking to WhatsApp. Do not substitute a lookalike to make the grid
-   uniform, and do not use a NonCommercial-licensed image to fill the gap.
+   uniform, and do not use a NonCommercial or attribution-required image.
 8. **Report honestly.** If something is untested, say so. Do not claim the site
    works unless you actually rendered it.
 9. **Stay in scope.** No refactors, dependencies, or restructuring as a side

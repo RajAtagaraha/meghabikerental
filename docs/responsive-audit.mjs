@@ -22,7 +22,7 @@ const DEVICES = [
   ['Desktop 2560',          2560, 1440, 2,   false],
 ];
 
-const PAGES = ['index.html','terms.html','privacy.html','credits.html'];
+const PAGES = ['index.html','terms.html','privacy.html'];
 
 async function rpc(ws, method, params={}, id={n:0}) {
   const msgId = ++id.n + Math.floor(Math.random()*1e6);

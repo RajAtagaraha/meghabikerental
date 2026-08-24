@@ -56,6 +56,11 @@ All rates per day (24 hours), INR.
 
 Source of truth is `BIKES` in `assets/js/data.js`, not this table.
 
+**Photography.** Only the Meteor 350 and Himalayan have photographs (both CC0).
+The other six vehicles show illustrations with a "Photo on request" WhatsApp
+badge. The site carries no photo attribution and no image requiring it may be
+added. Owner photography is pending.
+
 **Naming note.** The owner's original list read "Yamaha HSR 155", "TVS Ntorg 125",
 "Hero Xtrene 125". These were read as FZ-S 155, NTorq 125 and Xtreme 125R.
 The FZ-S 155 reading is **unconfirmed** — it may be an Aerox 155 or R15. Verify.

@@ -30,47 +30,37 @@ these three values, so changing them here changes them everywhere.
   the owner's instruction. If mail does not arrive, that is the first thing to
   re-check.)
 
-### 2. Replace the vehicle images (recommended, not blocking)
+### 2. Photograph your fleet (highest-impact remaining task)
 
-Five vehicles show real, correctly-licensed photographs of the right model,
-sourced from Wikimedia Commons and credited in the site footer:
+Only two vehicles have photographs — **Royal Enfield Meteor 350** and
+**Royal Enfield Himalayan**. Both are CC0, so no credit is needed.
 
-Classic 350, Meteor 350, Himalayan, NTorq 125, Xpulse 200.
+The other six show a themed illustration with a **"Photo on request"** badge that
+opens WhatsApp asking for photos of that bike:
 
-Three have **no usable photo anywhere in the free-licence world**, and show a
-themed illustration with a "Photo on request" badge that opens WhatsApp:
+Classic 350 · Yamaha FZ-S 155 · Yamaha Ray ZR 125 · TVS NTorq 125 ·
+Hero Xtreme 125R · Hero Xpulse 200
 
-Yamaha FZ-S 155, Yamaha Ray ZR 125, Hero Xtreme 125R.
+Licensed photographs of the Classic 350, NTorq 125 and Xpulse 200 do exist, but
+they require attribution, and photos of the FZ-S 155, Ray ZR 125 and
+Xtreme 125R do not exist under any commercial-friendly licence at all. Rather
+than carry a credits block, the decision was to show no photo.
 
-Two searches were run for these three. Wikimedia Commons has no Ray ZR 125 and
-no Xtreme 125R at all. Openverse has Yamaha FZ-S photos, but every one is
-licensed NonCommercial (`by-nc-sa` / `by-nc-nd`), which forbids use on a paid
-rental site. What does exist under usable licences are *different bikes* — the
-2007 CBZ Xtreme, Hero Hunk 160R, Yamaha FZ16, Yamaha Fascino — and showing a
-customer a bike you do not rent is worse than showing no photo.
-
-**So these three need your own photographs. There is no shortcut.**
+**So: photograph your own bikes.** It is the single biggest visual improvement
+left, and renters convert better on seeing the actual vehicle anyway.
 
 - Landscape, 4:3, at least 1200x900
 - Three-quarter angle, plain background, daylight
 - Save as `.jpg`, compress below 200 KB (squoosh.app is free)
-- Name the file exactly as listed in `data.js`
-- Set that vehicle's `photo: true` so the badge disappears and the photo shows
+- Name it exactly as the `image` field in `data.js` (e.g. `tvs-ntorq-125.jpg`)
+- Flip that vehicle's `photo: false` to `photo: true`
 
-Your own photos are worth taking for the other five too — renters convert better
-on seeing the actual vehicle, and it removes the attribution requirement.
+That is the whole process — the badge disappears and the photo appears.
 
-**Do not use images from Google Images or manufacturer press kits.** They are
-copyrighted, and after handover the liability is yours.
-
-**Do not delete `credits.html` or the footer link to it** while the Classic 350,
-NTorq 125 or Xpulse 200 photos are in use — attribution is a condition of their
-CC BY / CC BY-SA licences, and removing it turns the use into infringement.
-
-All other photography on the site is CC0 or public domain and needs no credit.
-Once you replace those three vehicle photos with your own, delete their entries
-from `credits.html`; when all three are gone you can delete the page and the
-footer paragraph entirely.
+**Never add an image that requires attribution.** Every image on the site is
+currently CC0 or public domain and the site carries no credits. Do not use
+Google Images results, manufacturer press kits, or anything licensed
+`by`, `by-sa`, `by-nc` or `by-nd`.
 
 ### 2b. Pick a theme, then lock it in
 

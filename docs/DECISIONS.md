@@ -289,3 +289,37 @@ dominate the card image.
 
 **Caching gotcha:** the CDP harness must set `Network.setCacheDisabled` — a first
 re-run reported identical results because Chrome served the old stylesheet.
+
+## 2026-08-24 — Attribution-required photos removed; site is now credit-free
+
+**Supersedes** the earlier decision to keep the three CC BY / CC BY-SA vehicle
+photos behind a credits page.
+
+**Context.** Owner's instruction: if a photo needs credit, drop the photo. Keep
+only vehicles whose photography needs no attribution, and remove the credits.
+
+**Decision.** Deleted the Classic 350, NTorq 125 and Xpulse 200 photographs and
+set `photo: false` on all three. Deleted `credits.html`, the footer credits
+paragraph, the footer Credits link, the sitemap entry, and the `.credits` CSS.
+
+**Result.** Every image on the site is now CC0 or public domain. There is no
+attribution anywhere and none is required.
+
+- Photographs: Royal Enfield Meteor 350 (CC0), Royal Enfield Himalayan (CC0)
+- Illustrations: the other six, each with a "Photo on request" WhatsApp badge
+- Landscapes: all CC0 / public domain
+
+**Consequences.** The fleet grid is now mostly illustrations, which is visually
+weaker than photographs and is the accepted cost of owning no attribution debt.
+Owner photography of the six remaining vehicles is now the single highest-impact
+improvement available — drop a `.jpg` into `assets/images/bikes/` matching the
+`image` field and flip `photo: true`.
+
+**New rule recorded in CLAUDE.md:** an image that would require attribution does
+not go on this site.
+
+**Mistake worth recording:** removing the `.credits` CSS block by cutting from a
+comment to the next section header also deleted the adjacent `.card__illus`,
+`.card__note` and card-alignment rules, which silently dropped the badge to 20px
+(a WCAG 2.5.8 failure) and unstyled the placeholder art. The responsive audit
+caught it. Delete CSS by matching the exact rules, not by cutting a range.

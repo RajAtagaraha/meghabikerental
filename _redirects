@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects. Ignored by GitHub Pages.
+# Apex to www, matching the rel=canonical on every page.
+https://meghabikerental.com/*   https://www.meghabikerental.com/:splat  301
+http://meghabikerental.com/*    https://www.meghabikerental.com/:splat  301

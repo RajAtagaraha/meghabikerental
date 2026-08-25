@@ -1,0 +1,28 @@
+# Cloudflare Pages headers.  Ignored by GitHub Pages, so it is safe to keep both.
+#
+# NOTE ON CACHING: asset filenames are NOT content-hashed (styles.css, not
+# styles.a1b2c3.css). A long immutable cache would leave visitors on a stale
+# stylesheet after a deploy. Durations below are deliberately short for code and
+# longer only for images, which change rarely and get a new filename when they do.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/css/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/images/*
+  Cache-Control: public, max-age=604800
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600

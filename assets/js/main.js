@@ -121,8 +121,8 @@
       +     '</p>'
       +     (out
             ? '<span class="btn btn--ghost btn--block" aria-disabled="true">Currently on rent</span>'
-            : '<a class="btn btn--wa btn--block" href="' + waLink(bikeEnquiry(bike)) + '"'
-              + ' target="_blank" rel="noopener">' + ICON_WA + 'Check availability</a>')
+            : '<a class="btn btn--wa btn--block" href="#book"'
+              + ' data-book="' + escapeHtml(bike.id) + '">' + ICON_WA + 'Check availability</a>')
 
       +   '</div>'
       + '</article>';
@@ -193,6 +193,149 @@
       + '</li>';
   }
 
+
+  /* --- enquiry form ------------------------------------------------------- */
+  /*
+     Static by design: nothing is transmitted from this page. The form composes
+     a wa.me link and hands it to WhatsApp, where the visitor presses send.
+  */
+
+  function iso(d) {
+    var m = String(d.getMonth() + 1);
+    var day = String(d.getDate());
+    return d.getFullYear() + '-' + (m.length < 2 ? '0' + m : m)
+                           + '-' + (day.length < 2 ? '0' + day : day);
+  }
+
+  function prettyDate(value) {
+    if (!value) return '';
+    var parts = value.split('-');
+    if (parts.length !== 3) return value;
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    if (isNaN(d.getTime())) return value;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function nights(a, b) {
+    var d1 = new Date(a), d2 = new Date(b);
+    if (isNaN(d1) || isNaN(d2)) return 0;
+    return Math.round((d2 - d1) / 86400000);
+  }
+
+  function setError(id, msg) {
+    var el = document.querySelector('[data-err-for="' + id + '"]');
+    var input = document.getElementById(id);
+    if (el) el.textContent = msg || '';
+    if (input) {
+      if (msg) { input.setAttribute('aria-invalid', 'true'); input.classList.add('is-invalid'); }
+      else { input.removeAttribute('aria-invalid'); input.classList.remove('is-invalid'); }
+    }
+  }
+
+  function initForm() {
+    var form = document.getElementById('enquiry-form');
+    if (!form) return;
+
+    var vehicle = document.getElementById('f-vehicle');
+    var pickup  = document.getElementById('f-pickup');
+    var ret     = document.getElementById('f-return');
+    var summary = document.getElementById('form-summary');
+
+    /* vehicle list comes from data.js so it can never drift from the fleet */
+    var opts = ['<option value="">Not sure yet — recommend one</option>'];
+    BIKES.forEach(function (b) {
+      opts.push('<option value="' + escapeHtml(b.id) + '"' + (b.available ? '' : ' disabled')
+        + '>' + escapeHtml(b.name) + ' — \u20B9' + b.price.toLocaleString('en-IN') + '/day'
+        + (b.available ? '' : ' (on rent)') + '</option>');
+    });
+    vehicle.innerHTML = opts.join('');
+
+    /* no past dates */
+    var today = iso(new Date());
+    pickup.min = today;
+    ret.min = today;
+
+    pickup.addEventListener('change', function () {
+      if (pickup.value) {
+        ret.min = pickup.value;
+        if (ret.value && ret.value < pickup.value) ret.value = '';
+      }
+      updateSummary();
+    });
+    ret.addEventListener('change', updateSummary);
+    vehicle.addEventListener('change', updateSummary);
+
+    function updateSummary() {
+      if (!pickup.value || !ret.value) { summary.textContent = ''; return; }
+      var n = nights(pickup.value, ret.value);
+      if (n <= 0) { summary.textContent = ''; return; }
+      var bike = BIKES.filter(function (b) { return b.id === vehicle.value; })[0];
+      var days = n + (n === 1 ? ' day' : ' days');
+      summary.textContent = bike
+        ? days + ' \u00D7 \u20B9' + bike.price.toLocaleString('en-IN')
+          + ' = \u20B9' + (bike.price * n).toLocaleString('en-IN') + ' estimated'
+        : days + ' \u2014 pick a vehicle to see an estimate';
+    }
+
+    function validate() {
+      var ok = true;
+      ['f-name','f-pickup','f-return'].forEach(function (id) { setError(id, ''); });
+
+      var name = document.getElementById('f-name');
+      if (!name.value.trim()) { setError('f-name', 'Please tell us your name.'); ok = false; }
+
+      if (!pickup.value) { setError('f-pickup', 'Choose a pickup date.'); ok = false; }
+      else if (pickup.value < today) { setError('f-pickup', 'Pickup cannot be in the past.'); ok = false; }
+
+      if (!ret.value) { setError('f-return', 'Choose a return date.'); ok = false; }
+      else if (pickup.value && nights(pickup.value, ret.value) <= 0) {
+        setError('f-return', 'Return must be after pickup.'); ok = false;
+      }
+      return ok;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validate()) {
+        var bad = form.querySelector('.is-invalid');
+        if (bad) bad.focus();
+        return;
+      }
+
+      var bike = BIKES.filter(function (b) { return b.id === vehicle.value; })[0];
+      var n = nights(pickup.value, ret.value);
+      var hotel = document.getElementById('f-hotel').value.trim();
+      var notes = document.getElementById('f-notes').value.trim();
+
+      var lines = [];
+      lines.push('Hi ' + BUSINESS.name + ', I would like to check availability.');
+      lines.push('');
+      lines.push('Name: ' + document.getElementById('f-name').value.trim());
+      lines.push('Vehicle: ' + (bike ? bike.name + ' (\u20B9' + bike.price + '/day)' : 'Not decided — please suggest'));
+      lines.push('Pickup: ' + prettyDate(pickup.value) + ' at ' + (document.getElementById('f-time').value || '09:00'));
+      lines.push('Return: ' + prettyDate(ret.value));
+      lines.push('Duration: ' + n + (n === 1 ? ' day' : ' days'));
+      lines.push('Riders: ' + document.getElementById('f-riders').value);
+      if (bike) lines.push('Estimated total: \u20B9' + (bike.price * n).toLocaleString('en-IN'));
+      lines.push('Hotel pickup: ' + (hotel ? hotel : 'Not needed'));
+      if (notes) lines.push('Notes: ' + notes);
+
+      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+    });
+
+    /* a card's "Check availability" preselects that vehicle and jumps here */
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-book]');
+      if (!trigger) return;
+      e.preventDefault();
+      vehicle.value = trigger.getAttribute('data-book');
+      updateSummary();
+      document.getElementById('book').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(function () { document.getElementById('f-name').focus(); }, 420);
+    });
+  }
+
   /* --- boot -------------------------------------------------------------- */
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -213,6 +356,7 @@
     }
 
     wireStaticLinks();
+    initForm();
     decorateTrust();
 
     /* Loud console warning if the placeholder number was never replaced. */

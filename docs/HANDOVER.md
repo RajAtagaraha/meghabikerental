@@ -62,6 +62,38 @@ currently CC0 or public domain and the site carries no credits. Do not use
 Google Images results, manufacturer press kits, or anything licensed
 `by`, `by-sa`, `by-nc` or `by-nd`.
 
+### 2c. How the enquiry form works
+
+The **Book** section composes a WhatsApp message from what the visitor types and
+opens WhatsApp with it pre-written. **Nothing is transmitted from the website** —
+there is no server, no database, no email. The visitor presses send themselves,
+so the enquiry reaches you as an ordinary WhatsApp message.
+
+What you receive:
+
+```
+Hi Megha Bike Rental, I would like to check availability.
+
+Name: Asha Kumar
+Vehicle: Royal Enfield Classic 350 (₹1399/day)
+Pickup: 10 Sep 2026 at 09:00
+Return: 13 Sep 2026
+Duration: 3 days
+Riders: 2
+Estimated total: ₹4,197
+Hotel pickup: Hotel Polo Towers
+```
+
+The vehicle list is generated from `BIKES` in `data.js`, so it can never drift
+from your fleet, and anything with `available: false` shows as "(on rent)" and
+cannot be selected. The estimate is `price × days` — it does **not** include the
+deposit or hotel-delivery charge, and the message says "estimated" for that
+reason. If you add extra charges, say so when you reply.
+
+Tapping "Check availability" on a vehicle card scrolls to this form and
+preselects that vehicle. The floating green button is still a direct chat for
+people who just want to ask a question.
+
 ### 2b. Pick a theme, then lock it in
 
 The site ships with a **theme picker** — the "Theme" button below the header on

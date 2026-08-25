@@ -55,6 +55,7 @@
       <a href="#how">How it works</a>
       <a href="#pickup">Hotel pickup</a>
       <a href="#faq">FAQ</a>
+      <a href="#book">Book</a>
       <a href="terms.html">Terms</a>
     </nav>
 
@@ -280,14 +281,88 @@
     </div>
   </section>
 
-  <!-- ================= CTA ================= -->
-  <section class="section">
+  <!-- ================= ENQUIRY FORM ================= -->
+  <section class="section" id="book">
     <div class="wrap">
-      <div class="band">
-        <h2>Ready to ride?</h2>
-        <p>Send us your dates on WhatsApp and we will confirm availability, usually within minutes.</p>
-        <a class="btn btn--wa" data-wa href="#">Message us on WhatsApp</a>
+      <div class="section__head">
+        <span class="eyebrow">Book</span>
+        <h2>Send us your dates</h2>
+        <p>
+          Fill this in and it opens WhatsApp with your details already written.
+          Nothing is sent until you press send in WhatsApp yourself.
+        </p>
       </div>
+
+      <form class="form" id="enquiry-form" novalidate>
+        <div class="form__grid">
+          <p class="field">
+            <label for="f-name">Your name <span aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name"
+                   required maxlength="60" placeholder="Full name">
+            <span class="field__err" data-err-for="f-name"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-vehicle">Vehicle</label>
+            <select id="f-vehicle" name="vehicle"></select>
+            <span class="field__err" data-err-for="f-vehicle"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-pickup">Pickup date <span aria-hidden="true">*</span></label>
+            <input id="f-pickup" name="pickup" type="date" required>
+            <span class="field__err" data-err-for="f-pickup"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-return">Return date <span aria-hidden="true">*</span></label>
+            <input id="f-return" name="return" type="date" required>
+            <span class="field__err" data-err-for="f-return"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-time">Pickup time</label>
+            <input id="f-time" name="time" type="time" value="09:00">
+          </p>
+
+          <p class="field">
+            <label for="f-riders">Riders</label>
+            <select id="f-riders" name="riders">
+              <option value="1">1 rider</option>
+              <option value="2" selected>2 (rider + pillion)</option>
+            </select>
+          </p>
+        </div>
+
+        <p class="field field--full">
+          <label for="f-hotel">Hotel or pickup address <span class="field__hint">optional &mdash; charges apply for delivery</span></label>
+          <input id="f-hotel" name="hotel" type="text" maxlength="90"
+                 placeholder="e.g. Hotel Polo Towers, Shillong">
+        </p>
+
+        <p class="field field--full">
+          <label for="f-notes">Anything else <span class="field__hint">optional</span></label>
+          <textarea id="f-notes" name="notes" rows="3" maxlength="300"
+                    placeholder="Licence type, riding experience, questions&hellip;"></textarea>
+        </p>
+
+        <p class="form__summary" id="form-summary" role="status" aria-live="polite"></p>
+
+        <button class="btn btn--wa btn--block" type="submit">Open WhatsApp with these details</button>
+
+        <p class="form__note">
+          This form does not send anything by itself. It opens WhatsApp on your
+          device with the message written out, so you can check it and press send.
+        </p>
+
+        <noscript>
+          <p class="form__note">
+            This form needs JavaScript. Message us directly on
+            <a data-wa href="#">WhatsApp</a> or call
+            <a data-phone href="#">+91 88558 53857</a> with your dates.
+          </p>
+        </noscript>
+      </form>
     </div>
   </section>
 
@@ -311,6 +386,7 @@
       <a href="#how">How it works</a></li>
           <li><a href="#pickup">Hotel pickup</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#book">Book</a></li>
         </ul>
       </div>
 

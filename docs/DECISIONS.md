@@ -323,3 +323,44 @@ comment to the next section header also deleted the adjacent `.card__illus`,
 `.card__note` and card-alignment rules, which silently dropped the badge to 20px
 (a WCAG 2.5.8 failure) and unstyled the placeholder art. The responsive audit
 caught it. Delete CSS by matching the exact rules, not by cutting a range.
+
+## 2026-08-25 — WhatsApp enquiry form, still fully static
+
+**Context.** Enquiries arrived as "I want the Classic 350" with no dates, so every
+one needed a round trip before availability could even be checked.
+
+**Decision.** Added a **Book** section that collects name, vehicle, pickup and
+return dates, time, rider count, hotel address and notes, then composes a `wa.me`
+link and opens WhatsApp with the message pre-written.
+
+**This adds no backend.** Nothing is transmitted from the page — no form action,
+no fetch, no third-party form service. The visitor presses send in WhatsApp
+themselves. The site remains a folder of static files.
+
+**Details.**
+- Vehicle options are generated from `BIKES`, so the form cannot drift from the
+  fleet; `available: false` renders as "(on rent)" and is disabled.
+- Pickup `min` is today; return `min` follows the chosen pickup date; a return
+  before pickup is rejected in JS as well, since `min` alone is bypassable.
+- A live estimate (`price × days`) appears once both dates are set. It is labelled
+  "estimated" because it excludes the deposit and the hotel-delivery charge —
+  both still TBD.
+- Card CTAs now route to the form with the vehicle preselected instead of opening
+  WhatsApp directly. The floating button remains a direct chat.
+- The bottom "Ready to ride?" CTA band was replaced by the form. Its CSS is now
+  unused but was deliberately left in place rather than risk another over-broad
+  deletion.
+
+**Accessibility / mobile.** Inputs are `font-size: 1rem` so iOS Safari does not
+zoom on focus; errors use `aria-invalid` plus a visible message; the estimate is
+`role="status"` `aria-live="polite"`. Invalid fields get a tinted fill as well as
+a red border, because on the warm palettes the accent focus ring is also reddish
+and border colour alone was ambiguous.
+
+**Verified** in Chromium and WebKit at 412px: preselection, empty-name rejection,
+reversed-date rejection, live estimate, and the composed message hitting
+`https://wa.me/918855853857?text=...` with all fields present. Full suites still
+pass: 72 cross-engine runs, 54 viewport combinations, 0 failures.
+
+**No-JS:** the form cannot work without JavaScript, so a `<noscript>` block gives
+the WhatsApp link and phone number directly.

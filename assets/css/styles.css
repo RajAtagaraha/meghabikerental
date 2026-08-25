@@ -23,6 +23,7 @@
   --deep-line:   #3b2d24;
   --header-bg:   rgba(255,255,255,.90);
   --amber:       #b45309;
+  --danger:      #c0392b;
   --hero-scrim:  30,22,17;
 
   /* Finish tokens — overridden by [data-finish] in themes.css */
@@ -510,3 +511,116 @@ a.card__note:hover { background: var(--accent); color: var(--accent-ink); }
    of blurb length. Do not put flex:1 back on .card__blurb. */
 .card__blurb { flex: 0 0 auto; }
 .price { margin-top: auto; }
+
+/* ==========================================================================
+   Enquiry form — composes a WhatsApp message client-side, sends nothing
+   ========================================================================== */
+
+.form {
+  max-width: 720px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-alpha);
+  -webkit-backdrop-filter: var(--surface-blur);
+  backdrop-filter: var(--surface-blur);
+  box-shadow: var(--shadow);
+}
+
+.form__grid {
+  display: grid; gap: 4px 18px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) { .form__grid { grid-template-columns: 1fr 1fr; } }
+
+.field { margin: 0 0 16px; display: flex; flex-direction: column; }
+.field--full { grid-column: 1 / -1; }
+
+.field label {
+  margin-bottom: 6px;
+  font-size: .86rem; font-weight: 650; color: var(--ink);
+}
+.field label span[aria-hidden] { color: var(--accent); }
+.field__hint { font-weight: 500; color: var(--ink-faint); font-size: .8rem; }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%; min-height: 46px;
+  padding: 11px 13px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit; font-size: 1rem;   /* 16px stops iOS Safari zooming on focus */
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  -webkit-appearance: none; appearance: none;
+}
+.field textarea { min-height: 84px; resize: vertical; line-height: 1.55; }
+
+/* native select needs its arrow back after appearance:none */
+.field select {
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 19px) calc(50% + 2px), calc(100% - 13px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 38px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+/* Invalid fields get a tinted fill as well as a red border — on the warm
+   palettes the accent focus ring is also reddish, so border colour alone is
+   not a reliable signal. */
+.field input.is-invalid,
+.field select.is-invalid,
+.field textarea.is-invalid {
+  border-color: var(--danger);
+  background-color: color-mix(in srgb, var(--danger) 8%, var(--surface));
+}
+.field input.is-invalid:focus,
+.field select.is-invalid:focus,
+.field textarea.is-invalid:focus {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 26%, transparent);
+}
+.field__err::before { content: '\26A0\FE0E'; margin-right: 5px; }
+
+.field__err {
+  min-height: 0; margin-top: 5px;
+  font-size: .8rem; color: var(--danger);
+}
+.field__err:empty { display: none; }
+
+.form__summary {
+  margin: 4px 0 18px; padding: 11px 14px;
+  border-radius: var(--radius);
+  background: var(--accent-tint);
+  color: var(--ink);
+  font-size: .9rem; font-weight: 600;
+}
+.form__summary:empty { display: none; }
+
+.form__note {
+  margin: 14px 0 0;
+  font-size: .82rem; color: var(--ink-faint); line-height: 1.6;
+}
+.form__note a { color: var(--accent); }
+
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus { box-shadow: 0 0 0 3px var(--accent-tint); }
+  .field input.is-invalid,
+  .field select.is-invalid,
+  .field textarea.is-invalid { background-color: var(--surface); border-width: 2px; }
+  .field input.is-invalid:focus,
+  .field select.is-invalid:focus,
+  .field textarea.is-invalid:focus { box-shadow: none; }
+}

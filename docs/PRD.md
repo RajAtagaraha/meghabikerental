@@ -21,7 +21,8 @@ Domain: https://www.meghabikerental.com
 
 ## MVP scope — built
 
-- Homepage with hero, fleet grid, how-it-works, hotel pickup, FAQ
+- Homepage with hero, fleet grid, how-it-works, hotel pickup, enquiry form, FAQ
+- Enquiry form that composes a WhatsApp message client-side (no backend)
 - 8 vehicles as cards, filterable by category
 - WhatsApp CTA on every card, pre-filled with the vehicle name and price
 - Floating WhatsApp button, persistent

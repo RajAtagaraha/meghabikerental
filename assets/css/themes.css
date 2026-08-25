@@ -492,3 +492,10 @@
   .tp__opt:hover { background: var(--bg-2); }
   .tp__opt[aria-pressed="true"] { background: var(--bg-2); }
 }
+
+/* Error red, readable on each palette (Carbon uses amber so it is not confused
+   with its racing-red accent). */
+[data-palette="obsidian"], [data-palette="abyss"], [data-palette="midnight"],
+[data-palette="espresso"], [data-palette="burgundy"], [data-palette="gunmetal"],
+[data-palette="dusk"] { --danger: #ff7a6b; }
+[data-palette="carbon"] { --danger: #ffb020; }

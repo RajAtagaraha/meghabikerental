@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-IN" data-palette="carbon" data-finish="water">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Bike Rental in Shillong, Meghalaya | Megha Bike Rental</title>
+<meta name="description" content="Rent Royal Enfield, Yamaha, Hero and TVS bikes and scooters in Shillong, Meghalaya from ₹899 per day. Two helmets included, hotel pickup and drop available. Check availability on WhatsApp.">
+<link rel="canonical" href="https://www.meghabikerental.com/">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#b4502f">
+<meta name="geo.region" content="IN-ML">
+<meta name="geo.placename" content="Shillong">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Megha Bike Rental">
+<meta property="og:title" content="Bike Rental in Shillong, Meghalaya | Megha Bike Rental">
+<meta property="og:description" content="Rent Royal Enfield, Yamaha, Hero and TVS bikes and scooters in Shillong from ₹899 per day. Hotel pickup and drop available.">
+<meta property="og:url" content="https://www.meghabikerental.com/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://www.meghabikerental.com/assets/images/og-cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/themes.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="header">
+  <div class="wrap header__bar">
+    <a class="logo" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="#b4502f"/>
+        <path d="M9 21.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm14 0a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" stroke="#fff" stroke-width="1.8"/>
+        <path d="M9 18h5l3-5h5l1.5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Megha Bike Rental</span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a href="#fleet">Our bikes</a>
+      <a href="#rides">Where to ride</a>
+      <a href="#how">How it works</a>
+      <a href="#pickup">Hotel pickup</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book">Book</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+
+    <a class="btn btn--wa btn--sm" data-wa href="#">Check availability</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <img class="hero__bg" src="assets/images/places/shillong-peak.jpg"
+         alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+    <div class="wrap">
+      <span class="eyebrow">Shillong &middot; Meghalaya</span>
+      <h1>Explore Meghalaya on two wheels.</h1>
+      <p class="hero__lede">
+        Well-maintained Royal Enfields, Yamahas, Heros and scooters on rent in
+        <span data-city>Shillong</span> from <strong>&#8377;899 a day</strong>. Pick your
+        vehicle, send us a WhatsApp message, and ride out the same day.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--wa" data-wa href="#">Check availability on WhatsApp</a>
+        <a class="btn btn--ghost" href="#fleet">Browse the fleet</a>
+      </div>
+
+      <ul class="trust">
+        <li>8 vehicles to choose from</li>
+        <li>Hotel pickup &amp; drop available</li>
+        <li>Serviced before every rental</li>
+        <li>Two helmets with every bike</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= FLEET ================= -->
+  <section class="section" id="fleet">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Our fleet</span>
+        <h2>Bikes and scooters on rent</h2>
+        <p>
+          All prices are per day for a 24-hour rental. Availability changes daily —
+          tap any vehicle to check your dates on WhatsApp.
+        </p>
+      </div>
+
+      <div class="filters" id="fleet-filters" role="group" aria-label="Filter vehicles by type"></div>
+      <p class="visually-hidden" id="fleet-status" role="status" aria-live="polite"></p>
+
+      <div class="grid" id="fleet-grid">
+        <noscript>
+          <p>Please enable JavaScript to browse the fleet, or message us on WhatsApp
+          and we will send you the current list and prices.</p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESTINATIONS ================= -->
+  <section class="section section--mist" id="rides">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Where to ride</span>
+        <h2>Meghalaya from the saddle</h2>
+        <p>
+          The reason to rent a bike here rather than book a cab: you stop where you
+          want. These are the rides our customers take most.
+        </p>
+      </div>
+      <ul class="places" id="places-grid"></ul>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="section section--mist" id="how">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">How it works</span>
+        <h2>Booking takes about five minutes</h2>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <h3>Pick your vehicle</h3>
+          <p>Browse the fleet above and note the model and daily rate that suits your trip.</p>
+        </li>
+        <li>
+          <h3>Message us on WhatsApp</h3>
+          <p>Send your pickup and return dates. We confirm availability, usually within minutes.</p>
+        </li>
+        <li>
+          <h3>Share your documents</h3>
+          <p>Send a photo of your driving licence and government photo ID so we can prepare the paperwork.</p>
+        </li>
+        <li>
+          <h3>Collect and ride</h3>
+          <p>Pick up from us, or ask for hotel delivery. We hand over the keys and you are on your way.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= PICKUP + REQUIREMENTS ================= -->
+  <section class="section" id="pickup">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Before you ride</span>
+        <h2>Pickup, drop and what to bring</h2>
+      </div>
+
+      <div class="panels">
+        <div class="panel">
+          <h3>Hotel pickup &amp; drop</h3>
+          <p style="font-size:.92rem;color:var(--ink-soft)">
+            We can deliver the vehicle to your hotel or homestay in
+            <span data-city>Shillong</span> and collect it at the end of your rental,
+            so you do not lose trip time travelling to us.
+          </p>
+          <ul>
+            <li>Delivery to your hotel or homestay</li>
+            <li>Collection from the same address</li>
+            <li>Charges apply, based on distance</li>
+          </ul>
+          <div class="note">
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 3.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM11 15H9V9h2z"/></svg>
+            <span><strong>TBD:</strong> confirm the hotel pickup and drop charge, then replace this note with the actual rate.</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>What you need to bring</h3>
+          <ul>
+            <li>A valid driving licence, in the rider's own name</li>
+            <li>An original government photo ID</li>
+            <li>A refundable security deposit</li>
+            <li>Petrol money — we start you off with &frac12;&ndash;1 litre</li>
+            <li>Nothing else — two helmets come with every bike</li>
+          </ul>
+          <div class="note">
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 3.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM11 15H9V9h2z"/></svg>
+            <span><strong>TBD:</strong> confirm the security deposit amount, then update this panel and the FAQ.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section--mist" id="faq">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>How do I book a bike?</summary>
+          <p>Pick a vehicle from the fleet above and tap “Check availability”. That opens
+          WhatsApp with your chosen bike already filled in — just add your pickup and
+          return dates and send. We reply with confirmation and the pickup details.</p>
+        </details>
+
+        <details>
+          <summary>What documents do I need to rent a bike in Meghalaya?</summary>
+          <p>You need a valid driving licence in the rider's own name that covers the
+          class of vehicle you are renting, plus an original government photo ID such as
+          Aadhaar, passport or voter ID. A learner's licence is not accepted. A refundable
+          security deposit is also collected at pickup.</p>
+        </details>
+
+        <details>
+          <summary>Do you deliver the bike to my hotel?</summary>
+          <p>Yes. We deliver to hotels and homestays in <span data-city>Shillong</span>
+          and collect the vehicle from the same address at the end of your rental. A
+          delivery and collection charge applies depending on distance — message us with
+          your hotel name for the exact amount.</p>
+        </details>
+
+        <details>
+          <summary>What is included in the daily rate?</summary>
+          <p>The rate covers a 24-hour rental of the vehicle, two helmets — one for the
+          rider and one for the pillion — and half a litre to one litre of petrol to get
+          you to a pump. Fuel beyond that is yours. TBD — confirm whether kilometres are
+          unlimited, and list any extra charges here.</p>
+        </details>
+
+        <details>
+          <summary>Are helmets provided?</summary>
+          <p>Yes — two helmets come with every bike, one for the rider and one for the
+          pillion, at no extra charge. Wearing them is required by law in Meghalaya for
+          both riders, and we would ask you to wear them regardless.</p>
+        </details>
+
+        <details>
+          <summary>Is fuel included?</summary>
+          <p>Every bike is handed over with half a litre to one litre of petrol in the
+          tank — enough to comfortably reach the nearest fuel pump. Fuel for the rest of
+          your trip is at your own cost.</p>
+        </details>
+
+        <details>
+          <summary>Can I take the bike outside Meghalaya?</summary>
+          <p>TBD — confirm whether riding into Assam or other neighbouring states is
+          permitted, and any conditions or extra charges that apply.</p>
+        </details>
+
+        <details>
+          <summary>What happens if the bike breaks down?</summary>
+          <p>Call us straight away on the number below. All vehicles are serviced before
+          every rental, but if something goes wrong we will talk you through it and arrange
+          help. Do not get repairs done yourself without speaking to us first.</p>
+        </details>
+
+        <details>
+          <summary>Can I cancel my booking?</summary>
+          <p>TBD — confirm the cancellation window and whether any advance or deposit is
+          refundable. See our <a href="terms.html">Terms &amp; Conditions</a> once finalised.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENQUIRY FORM ================= -->
+  <section class="section" id="book">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Book</span>
+        <h2>Send us your dates</h2>
+        <p>
+          Fill this in and it opens WhatsApp with your details already written.
+          Nothing is sent until you press send in WhatsApp yourself.
+        </p>
+      </div>
+
+      <form class="form" id="enquiry-form" novalidate>
+        <div class="form__grid">
+          <p class="field">
+            <label for="f-name">Your name <span aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name"
+                   required maxlength="60" placeholder="Full name">
+            <span class="field__err" data-err-for="f-name"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-vehicle">Vehicle</label>
+            <select id="f-vehicle" name="vehicle"></select>
+            <span class="field__err" data-err-for="f-vehicle"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-pickup">Pickup date <span aria-hidden="true">*</span></label>
+            <input id="f-pickup" name="pickup" type="date" required>
+            <span class="field__err" data-err-for="f-pickup"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-return">Return date <span aria-hidden="true">*</span></label>
+            <input id="f-return" name="return" type="date" required>
+            <span class="field__err" data-err-for="f-return"></span>
+          </p>
+
+          <p class="field">
+            <label for="f-time">Pickup time</label>
+            <input id="f-time" name="time" type="time" value="09:00">
+          </p>
+
+          <p class="field">
+            <label for="f-riders">Riders</label>
+            <select id="f-riders" name="riders">
+              <option value="1">1 rider</option>
+              <option value="2" selected>2 (rider + pillion)</option>
+            </select>
+          </p>
+        </div>
+
+        <p class="field field--full">
+          <label for="f-hotel">Hotel or pickup address <span class="field__hint">optional &mdash; charges apply for delivery</span></label>
+          <input id="f-hotel" name="hotel" type="text" maxlength="90"
+                 placeholder="e.g. Hotel Polo Towers, Shillong">
+        </p>
+
+        <p class="field field--full">
+          <label for="f-notes">Anything else <span class="field__hint">optional</span></label>
+          <textarea id="f-notes" name="notes" rows="3" maxlength="300"
+                    placeholder="Licence type, riding experience, questions&hellip;"></textarea>
+        </p>
+
+        <p class="form__summary" id="form-summary" role="status" aria-live="polite"></p>
+
+        <button class="btn btn--wa btn--block" type="submit">Open WhatsApp with these details</button>
+
+        <p class="form__note">
+          This form does not send anything by itself. It opens WhatsApp on your
+          device with the message written out, so you can check it and press send.
+        </p>
+
+        <noscript>
+          <p class="form__note">
+            This form needs JavaScript. Message us directly on
+            <a data-wa href="#">WhatsApp</a> or call
+            <a data-phone href="#">+91 88558 53857</a> with your dates.
+          </p>
+        </noscript>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Megha Bike Rental</h4>
+        <p>Bike and scooter rentals in <span data-city>Shillong</span>, Meghalaya.
+        Royal Enfield, Yamaha, Hero and TVS vehicles from ₹899 per day, with hotel
+        pickup and drop available.</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#fleet">Our bikes</a></li>
+          <li><a href="#rides">Where to ride</a>
+      <a href="#how">How it works</a></li>
+          <li><a href="#pickup">Hotel pickup</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#book">Book</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a data-phone href="#">+91 88558 53857</a></li>
+          <li><a data-wa href="#">WhatsApp us</a></li>
+          <li><a data-email href="#">meghabikerental@gmail.com</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span>&copy; <span data-year>2026</span> Megha Bike Rental. All rights reserved.</span>
+      <span>Ride safe. Always wear a helmet.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="#" aria-label="Check availability on WhatsApp">
+  <span class="fab__text">WhatsApp</span>
+</a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "AutoRental"],
+      "@id": "https://www.meghabikerental.com/#business",
+      "name": "Megha Bike Rental",
+      "url": "https://www.meghabikerental.com/",
+      "email": "meghabikerental@gmail.com",
+      "telephone": "+918855853857",
+      "description": "Bike and scooter rentals in Shillong, Meghalaya. Royal Enfield, Yamaha, Hero and TVS vehicles from Rs 899 per day, with hotel pickup and drop available.",
+      "image": "https://www.meghabikerental.com/assets/images/og-cover.svg",
+      "priceRange": "₹₹",
+      "currenciesAccepted": "INR",
+      "areaServed": { "@type": "State", "name": "Meghalaya" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Shillong",
+        "addressRegion": "Meghalaya",
+        "addressCountry": "IN"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.meghabikerental.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I book a bike?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pick a vehicle from the fleet and tap Check availability. That opens WhatsApp with your chosen bike already filled in. Add your pickup and return dates and send, and we reply with confirmation and pickup details." }
+        },
+        {
+          "@type": "Question",
+          "name": "What documents do I need to rent a bike in Meghalaya?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A valid driving licence in the rider's own name covering the class of vehicle, plus an original government photo ID such as Aadhaar, passport or voter ID. A learner's licence is not accepted. A refundable security deposit is collected at pickup." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you deliver the bike to my hotel?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We deliver to hotels and homestays in Shillong and collect the vehicle from the same address at the end of the rental. A delivery and collection charge applies depending on distance." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are helmets provided with the bike rental?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two helmets come with every bike, one for the rider and one for the pillion, at no extra charge. Wearing a helmet is required by law in Meghalaya for both riders." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is fuel included in the bike rental?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every bike is handed over with half a litre to one litre of petrol in the tank, enough to comfortably reach the nearest fuel pump. Fuel for the rest of the trip is at the rider's own cost." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the bike breaks down?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Call us immediately. All vehicles are serviced before every rental, but if something goes wrong we will talk you through it and arrange help. Do not arrange repairs yourself without speaking to us first." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

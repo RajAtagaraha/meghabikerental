@@ -1,0 +1,427 @@
+/* ==========================================================================
+   Megha Bike Rental — palettes & finishes
+   --------------------------------------------------------------------------
+   The live theme is fixed on <html> in each page:
+       <html lang="en-IN" data-palette="carbon" data-finish="water">
+
+   To change the whole site's look, edit those two attributes in index.html,
+   terms.html and privacy.html. Nothing else needs to change.
+
+   Palettes: sand ivory glacier steel obsidian espresso
+             midnight burgundy carbon gunmetal abyss dusk
+   Finishes: matte crystal water metal vapour
+
+   The other combinations are kept because they cost nothing and make a future
+   restyle a two-attribute edit. The picker that used to switch them live was
+   removed before handover.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. PALETTES
+   ========================================================================== */
+
+/* --- Sand & Terracotta — warm, light, earthy -------------------------- */
+[data-palette="sand"] {
+  --ink:#2b211c; --ink-soft:#6b5b50; --ink-faint:#9a8878;
+  --accent:#b4502f; --accent-2:#8f3c20; --accent-tint:#f7e9e0; --accent-ink:#fff;
+  --bg:#fbf7f1; --bg-2:#f4ece0; --surface:#ffffff; --line:#e7dccc;
+  --deep:#2b211c; --deep-2:#241b16; --deep-ink:#cbb8a6; --deep-line:#3b2d24;
+  --header-bg:rgba(255,255,255,.90); --hero-scrim:30,22,17;
+  --shadow:0 1px 2px rgba(43,33,28,.06), 0 4px 16px rgba(43,33,28,.07);
+  --shadow-lg:0 2px 4px rgba(43,33,28,.07), 0 18px 40px rgba(43,33,28,.15);
+}
+
+/* --- Obsidian & Copper — dark, warm metal, showroom ------------------- */
+[data-palette="obsidian"] {
+  --ink:#f4efe9; --ink-soft:#b3a89d; --ink-faint:#8a7d71;
+  --accent:#c87137; --accent-2:#e08b4d; --accent-tint:#2a1f17; --accent-ink:#14100c;
+  --bg:#100d0b; --bg-2:#181310; --surface:#1c1613; --line:#2e2620;
+  --deep:#0b0908; --deep-2:#0b0908; --deep-ink:#a89c90; --deep-line:#241d18;
+  --header-bg:rgba(16,13,11,.86); --hero-scrim:8,6,5;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 4px 18px rgba(0,0,0,.42);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 22px 48px rgba(0,0,0,.62);
+}
+
+/* --- Glacier & Ice — cool, bright, crystalline ------------------------ */
+[data-palette="glacier"] {
+  --ink:#111d28; --ink-soft:#516475; --ink-faint:#8296a8;
+  --accent:#0f6fa8; --accent-2:#0a5482; --accent-tint:#e2f0f9; --accent-ink:#fff;
+  --bg:#f4f9fc; --bg-2:#e6f1f8; --surface:#ffffff; --line:#d3e3ee;
+  --deep:#0e2233; --deep-2:#0b1b29; --deep-ink:#a9c2d4; --deep-line:#1d3a52;
+  --header-bg:rgba(255,255,255,.86); --hero-scrim:10,26,40;
+  --shadow:0 1px 2px rgba(17,45,64,.06), 0 4px 18px rgba(17,45,64,.09);
+  --shadow-lg:0 2px 6px rgba(17,45,64,.09), 0 20px 44px rgba(17,45,64,.16);
+}
+
+/* --- Deep Water — dark blue, fluid, oceanic --------------------------- */
+[data-palette="abyss"] {
+  --ink:#eaf4fb; --ink-soft:#9fb9cd; --ink-faint:#7590a6;
+  --accent:#2ea3d6; --accent-2:#57c4ee; --accent-tint:#0e2b3d; --accent-ink:#04151f;
+  --bg:#08151f; --bg-2:#0c1e2c; --surface:#102636; --line:#1c3a50;
+  --deep:#050e15; --deep-2:#050e15; --deep-ink:#93aec2; --deep-line:#17303f;
+  --header-bg:rgba(8,21,31,.84); --hero-scrim:3,11,17;
+  --shadow:0 1px 2px rgba(0,0,0,.46), 0 4px 20px rgba(0,20,35,.5);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 24px 52px rgba(0,24,42,.66);
+}
+
+/* --- Midnight & Champagne — black + gold, luxury ---------------------- */
+[data-palette="midnight"] {
+  --ink:#f6f2e9; --ink-soft:#b8b0a1; --ink-faint:#8d8578;
+  --accent:#c9a961; --accent-2:#e0c384; --accent-tint:#261f13; --accent-ink:#14110a;
+  --bg:#0c0c0e; --bg-2:#131316; --surface:#18181c; --line:#2a2a30;
+  --deep:#08080a; --deep-2:#08080a; --deep-ink:#a9a396; --deep-line:#222228;
+  --header-bg:rgba(12,12,14,.86); --hero-scrim:5,5,7;
+  --shadow:0 1px 2px rgba(0,0,0,.55), 0 4px 18px rgba(0,0,0,.45);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.55), 0 22px 50px rgba(0,0,0,.68);
+}
+
+/* --- Carbon & Racing Red — automotive, high contrast ------------------ */
+[data-palette="carbon"] {
+  --ink:#f2f3f5; --ink-soft:#a9aeb5; --ink-faint:#7d838b;
+  --accent:#d81f2a; --accent-2:#f0343f; --accent-tint:#2a1214; --accent-ink:#fff;
+  --bg:#0d0f11; --bg-2:#15181b; --surface:#191d21; --line:#282e34;
+  --deep:#08090b; --deep-2:#08090b; --deep-ink:#9aa1a8; --deep-line:#22282e;
+  --header-bg:rgba(13,15,17,.86); --hero-scrim:5,6,7;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 4px 18px rgba(0,0,0,.44);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.66);
+}
+
+
+/* --- Ivory & Ink — light monochrome, editorial ------------------------ */
+[data-palette="ivory"] {
+  --ink:#16181a; --ink-soft:#5d6266; --ink-faint:#8d9296;
+  --accent:#16181a; --accent-2:#3a3f44; --accent-tint:#eceef0; --accent-ink:#fff;
+  --bg:#fafafa; --bg-2:#f1f2f3; --surface:#ffffff; --line:#e2e4e6;
+  --deep:#16181a; --deep-2:#101214; --deep-ink:#a8adb2; --deep-line:#2a2d30;
+  --header-bg:rgba(255,255,255,.90); --hero-scrim:16,18,20;
+  --shadow:0 1px 2px rgba(20,22,24,.05), 0 4px 16px rgba(20,22,24,.07);
+  --shadow-lg:0 2px 6px rgba(20,22,24,.08), 0 18px 42px rgba(20,22,24,.14);
+}
+
+/* --- Steel & Electric — cool grey, vivid blue ------------------------- */
+[data-palette="steel"] {
+  --ink:#141a21; --ink-soft:#556170; --ink-faint:#8492a1;
+  --accent:#1f5fe0; --accent-2:#1746a8; --accent-tint:#e4ecfd; --accent-ink:#fff;
+  --bg:#f6f8fa; --bg-2:#eaeef3; --surface:#ffffff; --line:#dbe2ea;
+  --deep:#111820; --deep-2:#0c1218; --deep-ink:#a3b1c0; --deep-line:#232d38;
+  --header-bg:rgba(255,255,255,.88); --hero-scrim:12,18,26;
+  --shadow:0 1px 2px rgba(18,26,36,.06), 0 4px 18px rgba(18,26,36,.09);
+  --shadow-lg:0 2px 6px rgba(18,26,36,.09), 0 20px 46px rgba(18,26,36,.16);
+}
+
+/* --- Espresso & Cream — dark warm leather ----------------------------- */
+[data-palette="espresso"] {
+  --ink:#f5ece1; --ink-soft:#b8a696; --ink-faint:#8f7f70;
+  --accent:#d9a066; --accent-2:#f0bd85; --accent-tint:#2b2018; --accent-ink:#1b1309;
+  --bg:#161009; --bg-2:#1f170e; --surface:#241b11; --line:#382b1d;
+  --deep:#0f0b06; --deep-2:#0f0b06; --deep-ink:#ab9a89; --deep-line:#2c2116;
+  --header-bg:rgba(22,16,9,.86); --hero-scrim:11,8,4;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 4px 18px rgba(0,0,0,.44);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.64);
+}
+
+/* --- Burgundy & Brass — deep wine, warm metal ------------------------- */
+[data-palette="burgundy"] {
+  --ink:#f6ebe9; --ink-soft:#c0a3a2; --ink-faint:#977e7d;
+  --accent:#c9a227; --accent-2:#e3bf4c; --accent-tint:#2c1418; --accent-ink:#170f04;
+  --bg:#150a0d; --bg-2:#1f1014; --surface:#251418; --line:#3a2126;
+  --deep:#0e0608; --deep-2:#0e0608; --deep-ink:#b09795; --deep-line:#2e191d;
+  --header-bg:rgba(21,10,13,.86); --hero-scrim:10,5,7;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 4px 18px rgba(0,0,0,.44);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.64);
+}
+
+/* --- Gunmetal & Chrome — dark monochrome, industrial ------------------ */
+[data-palette="gunmetal"] {
+  --ink:#eef1f4; --ink-soft:#a4acb4; --ink-faint:#7b838b;
+  --accent:#8fa3b8; --accent-2:#bccadb; --accent-tint:#1e242a; --accent-ink:#0d1216;
+  --bg:#101418; --bg-2:#171c21; --surface:#1b2126; --line:#2a3238;
+  --deep:#0a0d10; --deep-2:#0a0d10; --deep-ink:#98a1a9; --deep-line:#232a30;
+  --header-bg:rgba(16,20,24,.86); --hero-scrim:6,8,10;
+  --shadow:0 1px 2px rgba(0,0,0,.48), 0 4px 18px rgba(0,0,0,.42);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 22px 50px rgba(0,0,0,.62);
+}
+
+/* --- Dusk & Coral — indigo night, warm coral -------------------------- */
+[data-palette="dusk"] {
+  --ink:#f0eefb; --ink-soft:#a9a4cc; --ink-faint:#837ea6;
+  --accent:#f2694f; --accent-2:#ff8a72; --accent-tint:#241d3d; --accent-ink:#fff;
+  --bg:#0f0d1c; --bg-2:#171429; --surface:#1c1832; --line:#2c2649;
+  --deep:#0a0814; --deep-2:#0a0814; --deep-ink:#9b95bd; --deep-line:#241f3c;
+  --header-bg:rgba(15,13,28,.86); --hero-scrim:7,6,14;
+  --shadow:0 1px 2px rgba(0,0,0,.46), 0 4px 20px rgba(10,5,30,.5);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.5), 0 24px 52px rgba(10,5,30,.66);
+}
+
+/* ==========================================================================
+   2. FINISHES
+   ========================================================================== */
+
+/* --- Matte — solid surfaces, crisp hairlines -------------------------- */
+[data-finish="matte"] {
+  --surface-alpha: var(--surface);
+  --surface-blur: none;
+  --card-border: var(--line);
+}
+
+/* --- Crystal — frosted glass, specular edge --------------------------- */
+[data-finish="crystal"] {
+  --surface-alpha: color-mix(in srgb, var(--surface) 62%, transparent);
+  --surface-blur: blur(18px) saturate(165%);
+  --card-border: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+[data-finish="crystal"] .card,
+[data-finish="crystal"] .panel,
+[data-finish="crystal"] .steps li { overflow: hidden; }
+
+/* specular sheen across the top-left of every glass surface */
+[data-finish="crystal"] .card::before,
+[data-finish="crystal"] .panel::before,
+[data-finish="crystal"] .steps li::before,
+[data-finish="crystal"] .band::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #fff 34%, transparent) 0%,
+    transparent 34%,
+    transparent 62%,
+    color-mix(in srgb, #fff 10%, transparent) 100%);
+  mix-blend-mode: soft-light;
+}
+/* keep the numbered-step counter above its own sheen */
+[data-finish="crystal"] .steps li::before {
+  content: counter(step);
+  display: flex; align-items: center; justify-content: center;
+  position: static; inset: auto; width: 34px; height: 34px;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 999px; margin-bottom: 14px; mix-blend-mode: normal;
+}
+[data-finish="crystal"] .band { position: relative; overflow: hidden; }
+[data-finish="crystal"] .header {
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+[data-finish="crystal"] .card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, #fff 14%, transparent) inset;
+}
+
+/* --- Water — fluid surfaces, slow caustic drift ----------------------- */
+[data-finish="water"] {
+  --surface-alpha: color-mix(in srgb, var(--surface) 72%, transparent);
+  --surface-blur: blur(14px) saturate(150%);
+  --card-border: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+[data-finish="water"] body {
+  background-image:
+    radial-gradient(1100px 620px at 8% -8%,  color-mix(in srgb, var(--accent) 15%, transparent) 0%, transparent 62%),
+    radial-gradient(950px 560px at 96% 12%,  color-mix(in srgb, var(--accent-2) 13%, transparent) 0%, transparent 58%),
+    radial-gradient(900px 700px at 46% 108%, color-mix(in srgb, var(--accent) 11%, transparent) 0%, transparent 62%);
+  background-attachment: fixed;
+}
+[data-finish="water"] .card,
+[data-finish="water"] .panel,
+[data-finish="water"] .steps li { position: relative; overflow: hidden; }
+
+/* slow drifting sheen, like light moving over water */
+[data-finish="water"] .card::after {
+  content: ''; position: absolute; inset: -40%; pointer-events: none; z-index: 3;
+  background: linear-gradient(115deg,
+    transparent 38%,
+    color-mix(in srgb, #fff 22%, transparent) 48%,
+    transparent 58%);
+  transform: translateX(-60%);
+  transition: transform 1.15s var(--ease);
+}
+[data-finish="water"] .card:hover::after { transform: translateX(60%); }
+[data-finish="water"] .card:hover {
+  border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+}
+[data-finish="water"] .btn {
+  position: relative; overflow: hidden;
+}
+[data-finish="water"] .btn--wa::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(120px 60px at var(--mx,50%) var(--my,50%),
+    color-mix(in srgb, #fff 30%, transparent) 0%, transparent 70%);
+  opacity: 0; transition: opacity .4s var(--ease);
+}
+[data-finish="water"] .btn--wa:hover::after { opacity: 1; }
+
+
+/* --- Metal — brushed metallic surfaces, hard specular edge ------------ */
+[data-finish="metal"] {
+  --surface-alpha: var(--surface);
+  --surface-blur: none;
+  --card-border: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+[data-finish="metal"] .card,
+[data-finish="metal"] .panel,
+[data-finish="metal"] .steps li {
+  background-image: linear-gradient(160deg,
+    color-mix(in srgb, var(--ink) 6%, transparent) 0%,
+    transparent 26%,
+    transparent 74%,
+    color-mix(in srgb, var(--ink) 4%, transparent) 100%);
+}
+[data-finish="metal"] .card { position: relative; }
+/* hard highlight along the top edge, like light on a bevelled panel */
+[data-finish="metal"] .card::before,
+[data-finish="metal"] .panel::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  z-index: 4; pointer-events: none;
+  background: linear-gradient(90deg, transparent,
+    color-mix(in srgb, #fff 46%, transparent) 22%,
+    color-mix(in srgb, #fff 46%, transparent) 78%, transparent);
+}
+[data-finish="metal"] .btn--wa {
+  background-image: linear-gradient(180deg,
+    color-mix(in srgb, #fff 20%, transparent), transparent 58%);
+}
+[data-finish="metal"] .card:hover { border-color: var(--accent); }
+
+/* --- Vapour — soft diffused glow, no hard edges ----------------------- */
+[data-finish="vapour"] {
+  --surface-alpha: color-mix(in srgb, var(--surface) 78%, transparent);
+  --surface-blur: blur(26px) saturate(120%);
+  --card-border: transparent;
+}
+[data-finish="vapour"] .card,
+[data-finish="vapour"] .panel,
+[data-finish="vapour"] .steps li {
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+[data-finish="vapour"] .card:hover {
+  box-shadow: 0 18px 60px color-mix(in srgb, var(--accent) 26%, transparent);
+  border-color: transparent;
+}
+[data-finish="vapour"] body {
+  background-image:
+    radial-gradient(1200px 700px at 20% -10%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(1000px 620px at 88% 20%, color-mix(in srgb, var(--accent-2) 8%, transparent) 0%, transparent 58%);
+  background-attachment: fixed;
+}
+
+/* ==========================================================================
+   3. Dark-palette corrections
+   Photographs and the fixed white text blocks need help on dark backgrounds.
+   ========================================================================== */
+
+[data-palette="obsidian"] .card__media,
+[data-palette="abyss"] .card__media,
+[data-palette="midnight"] .card__media,
+[data-palette="carbon"] .card__media,
+[data-palette="espresso"] .card__media,
+[data-palette="burgundy"] .card__media,
+[data-palette="gunmetal"] .card__media,
+[data-palette="dusk"] .card__media { background: var(--bg-2); }
+
+[data-palette="obsidian"] .specs li,
+[data-palette="abyss"] .specs li,
+[data-palette="midnight"] .specs li,
+[data-palette="carbon"] .specs li,
+[data-palette="espresso"] .specs li,
+[data-palette="burgundy"] .specs li,
+[data-palette="gunmetal"] .specs li,
+[data-palette="dusk"] .specs li { background: var(--bg-2); border-color: var(--line); }
+
+[data-palette="obsidian"] .card__tag,
+[data-palette="abyss"] .card__tag,
+[data-palette="midnight"] .card__tag,
+[data-palette="carbon"] .card__tag,
+[data-palette="espresso"] .card__tag,
+[data-palette="burgundy"] .card__tag,
+[data-palette="gunmetal"] .card__tag,
+[data-palette="dusk"] .card__tag {
+  background: rgba(0,0,0,.62); color: var(--accent-2);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+[data-palette="obsidian"] .note,
+[data-palette="abyss"] .note,
+[data-palette="midnight"] .note,
+[data-palette="carbon"] .note,
+[data-palette="espresso"] .note,
+[data-palette="burgundy"] .note,
+[data-palette="gunmetal"] .note,
+[data-palette="dusk"] .note {
+  background: color-mix(in srgb, var(--amber) 14%, transparent);
+  border-color: color-mix(in srgb, var(--amber) 34%, transparent);
+  color: #f0c98a;
+}
+[data-palette="obsidian"] .note svg,
+[data-palette="abyss"] .note svg,
+[data-palette="midnight"] .note svg,
+[data-palette="carbon"] .note svg,
+[data-palette="espresso"] .note svg,
+[data-palette="burgundy"] .note svg,
+[data-palette="gunmetal"] .note svg,
+[data-palette="dusk"] .note svg { color: #f0c98a; }
+
+[data-palette="obsidian"] .band,
+[data-palette="abyss"] .band,
+[data-palette="midnight"] .band,
+[data-palette="carbon"] .band,
+[data-palette="espresso"] .band,
+[data-palette="burgundy"] .band,
+[data-palette="gunmetal"] .band,
+[data-palette="dusk"] .band { border: 1px solid var(--line); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-finish="water"] .card::after { display: none; }
+  [data-finish="metal"] .card { transition: none; }
+}
+
+/* ==========================================================================
+   4. Fallback for engines without color-mix()  (Safari < 16.2, Firefox < 113)
+   --------------------------------------------------------------------------
+   `background: var(--surface-alpha)` where the token holds an unsupported
+   color-mix() is invalid at computed-value time, which resolves to `initial`
+   — i.e. TRANSPARENT. Every card would lose its background. An earlier
+   fallback declaration does not help for that failure mode, so the tokens are
+   forced to solid values here instead.
+   ========================================================================== */
+
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  [data-finish="crystal"],
+  [data-finish="water"],
+  [data-finish="vapour"],
+  [data-finish="metal"] {
+    --surface-alpha: var(--surface);
+    --card-border: var(--line);
+  }
+
+  /* derived light accent used on photo scrims */
+  :root { --on-photo-accent: var(--accent-2); }
+
+  /* decorative sheens degrade to nothing rather than a broken paint */
+  [data-finish="crystal"] .card::before,
+  [data-finish="crystal"] .panel::before,
+  [data-finish="crystal"] .band::before,
+  [data-finish="water"] .card::after,
+  [data-finish="metal"] .card::before,
+  [data-finish="metal"] .panel::before { display: none; }
+
+  [data-finish="water"] body,
+  [data-finish="vapour"] body { background-image: none; }
+
+  [data-finish="metal"] .card,
+  [data-finish="metal"] .panel,
+  [data-finish="metal"] .steps li { background-image: none; }
+
+  /* warning notes keep a readable solid treatment */
+  [data-palette="obsidian"] .note, [data-palette="abyss"] .note,
+  [data-palette="midnight"] .note, [data-palette="carbon"] .note,
+  [data-palette="espresso"] .note, [data-palette="burgundy"] .note,
+  [data-palette="gunmetal"] .note, [data-palette="dusk"] .note {
+    background: var(--bg-2); border-color: var(--line); color: #f0c98a;
+  }
+  .note { background: var(--bg-2); border-color: var(--line); color: var(--ink); }
+}
+
+/* Error red, readable on each palette (Carbon uses amber so it is not confused
+   with its racing-red accent). */
+[data-palette="obsidian"], [data-palette="abyss"], [data-palette="midnight"],
+[data-palette="espresso"], [data-palette="burgundy"], [data-palette="gunmetal"],
+[data-palette="dusk"] { --danger: #ff7a6b; }
+[data-palette="carbon"] { --danger: #ffb020; }

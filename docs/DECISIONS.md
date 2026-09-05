@@ -364,3 +364,29 @@ pass: 72 cross-engine runs, 54 viewport combinations, 0 failures.
 
 **No-JS:** the form cannot work without JavaScript, so a `<noscript>` block gives
 the WhatsApp link and phone number directly.
+
+## 2026-09-05 — Theme locked to Carbon & Racing Red + Water; picker removed
+
+**Decision.** The final look is `data-palette="carbon" data-finish="water"`, set
+on the `<html>` tag of all three pages. Near-black surfaces, racing-red accent,
+frosted cards over a soft red page glow.
+
+The owner's instruction named "carbon and racing and water crystal". The palette
+was unambiguous, but Water and Crystal are two separate finishes; both were
+rendered on carbon and the owner chose Water.
+
+**Removed:** `assets/js/theme.js`, its `<script>` tags, the no-flash localStorage
+snippet, and section 4 of themes.css (78 lines of picker styling). Visitors can
+no longer recolour the site.
+
+**Kept:** all 12 palettes and 5 finishes. They cost nothing at runtime — only the
+matching `[data-palette]` / `[data-finish]` block applies — and they make a future
+restyle a two-attribute edit rather than a rewrite.
+
+**Consequence.** The theme no longer depends on JavaScript or localStorage at all,
+so it is correct on first paint with no flash, and correct with JS disabled.
+
+**Verified** headlessly: `data-palette=carbon`, `data-finish=water`, body
+`rgb(13,15,17)`, card `rgba(...,0.72)` with `blur(14px) saturate(1.5)`, accent
+button `rgb(216,31,42)`, no `.tp` element in the DOM, 8 cards, 4 destinations,
+form present.

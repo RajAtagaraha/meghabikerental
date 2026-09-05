@@ -26,31 +26,50 @@ framework.** If a task seems to need one, say so and stop; do not add it.
 
 ## Commands
 
-There is no build. To preview locally:
+Preview locally:
 
 ```
 python3 -m http.server 8000     # then open http://localhost:8000
 ```
 
-To deploy: push to the connected repo. Cloudflare Pages publishes the root
-directory as-is. No build command, no output directory.
+Deploy:
+
+```
+./deploy.sh                     # build + publish to GitHub Pages (gh-pages branch)
+./deploy.sh cloudflare          # build + publish to Cloudflare Pages
+```
+
+`build.sh` assembles **only public files** into `dist/`. There is no compilation
+step — it is a copy — but it exists so `docs/`, `CLAUDE.md` and the shell scripts
+are never served. They previously were, and `/docs/PRD.md` returned 200 on the
+live domain. Never publish the repo root.
+
+GitHub Pages serves the **gh-pages** branch, not `main`. Pushing to `main` alone
+changes nothing on the live site; you must run `./deploy.sh`.
 
 ## Layout
 
 ```
-index.html              Homepage — hero, fleet, how it works, pickup, FAQ
+index.html              Homepage — hero, fleet, rides, how it works, pickup,
+                        enquiry form (#book), FAQ
 terms.html              Terms & Conditions
 privacy.html            Privacy Policy
 robots.txt              Crawler rules
 sitemap.xml             Three URLs; update lastmod when pages change
+_headers                Cloudflare caching + security headers (GitHub ignores it)
+_redirects              Cloudflare apex -> www (GitHub ignores it)
+build.sh                Copies public files into dist/. Keeps docs private.
+deploy.sh               build + publish (GitHub Pages, or Cloudflare)
+dist/                   Build output. Gitignored. Never edit by hand.
 assets/css/styles.css   Layout and components. Semantic tokens in :root.
-assets/css/themes.css   12 palettes + 5 finishes, plus the picker's own styles.
-assets/js/theme.js      Theme picker. PREVIEW TOOL — delete before handover.
+assets/css/themes.css   12 palettes + 5 finishes. Live theme is fixed on <html>.
 assets/js/data.js       Business details + fleet + prices. THE file owners edit.
-assets/js/main.js       Renders cards, filtering, WhatsApp link building.
+assets/js/main.js       Cards, filtering, WhatsApp links, enquiry form.
 assets/images/bikes/    Photos only for vehicles with photo:true (currently 2).
                         The other six render inline SVG art from main.js.
-assets/images/places/   Destination + hero photography, all CC-licensed
+assets/images/places/   Destination + hero photography, all CC0 / public domain
+docs/                   PRD, DECISIONS, HANDOVER, and the two audit scripts.
+                        NEVER published — build.sh excludes it.
 ```
 
 ## Ground rules
@@ -83,9 +102,13 @@ These exist to stop confident wrong answers. They matter more than style.
    `photo: false`, which renders the inline illustration plus a "Photo on request"
    badge linking to WhatsApp. Do not substitute a lookalike to make the grid
    uniform, and do not use a NonCommercial or attribution-required image.
-8. **Report honestly.** If something is untested, say so. Do not claim the site
+8. **The enquiry form must stay client-side.** `#book` composes a `wa.me` link
+   in the browser and opens WhatsApp. It has no `action`, sends no `fetch`, and
+   uses no third-party form service. Do not add one — that would put customer
+   names and phone numbers through a server this site does not have.
+9. **Report honestly.** If something is untested, say so. Do not claim the site
    works unless you actually rendered it.
-9. **Stay in scope.** No refactors, dependencies, or restructuring as a side
+10. **Stay in scope.** No refactors, dependencies, or restructuring as a side
    effect of an unrelated task. Propose instead.
 
 ## Conventions
@@ -96,20 +119,21 @@ These exist to stop confident wrong answers. They matter more than style.
 - Any user-facing string built into HTML goes through `escapeHtml()`.
 - Currency INR, displayed with `₹` and `toLocaleString('en-IN')`.
 - **Never hardcode a colour in styles.css.** Every colour must be a semantic
-  token (`--bg`, `--surface`, `--ink`, `--accent`, `--line`, `--deep`, …) so all
-  six palettes keep working. A raw hex in a component rule is a bug: it will look
-  correct in one palette and broken in the other five. The only exceptions are
+  token (`--bg`, `--surface`, `--ink`, `--accent`, `--line`, `--deep`, `--danger`,
+  …) so all twelve palettes keep working. A raw hex in a component rule is a bug:
+  it will look correct in one palette and broken in the other eleven. The only exceptions are
   `#fff` on top of the fixed dark photo scrims (hero, destination cards, band).
 - **There is deliberately no green in this design**, including on the WhatsApp
   buttons — the owner asked for it removed.
 - Placeholder vehicle art is inlined as SVG by `main.js`, not loaded as a file,
   so it inherits `--accent`. Do not turn it back into an `<img>`.
-- Palettes and finishes are chosen via `data-palette` / `data-finish` on `<html>`.
-  Theme precedence is: saved localStorage choice > attribute in the HTML >
-  `PICKER_DEFAULT` in theme.js.
-- A new palette must be added in three places or it will half-work: the token
-  block in themes.css, the `PALETTES` array in theme.js, and — if it is dark —
-  every selector list in themes.css section 3.
+- **The live theme is `data-palette="carbon" data-finish="water"`, set on the
+  `<html>` tag of all three pages.** To restyle the whole site, change those two
+  attributes in the three files — nothing else. The theme picker was removed at
+  handover; there is no theme.js and no localStorage involved any more.
+- A new palette must be added in two places or it will half-work: the token block
+  in themes.css, and — if it is dark — every selector list in themes.css
+  section 3 (currently eight selectors per rule).
 - Card layout: `.price` carries `margin-top: auto` so buttons align across a grid
   row regardless of blurb length. Do not put `flex: 1` back on `.card__blurb`.
 - English (en-IN) spelling: "licence" the noun, "tyre", "kerb".
@@ -119,8 +143,12 @@ These exist to stop confident wrong answers. They matter more than style.
   `minmax(min(Npx, 100%), 1fr)`, never a bare `minmax(Npx, 1fr)`, or it will
   overflow there.
 - **Tap targets: 44px minimum height** on anything clickable. Body and label text
-  never below 12px. Re-run `scratchpad/resp.mjs` after layout changes — it drives
-  real device emulation over CDP and must report 0 hard failures.
+  never below 12px.
+- After any layout or CSS change, re-run both audits in `docs/`:
+  `responsive-audit.mjs` (18 viewports, 280px-2560px, over CDP) and
+  `cross-browser-audit.mjs` (Chromium + WebKit + Gecko via Playwright). Both must
+  report 0 failures. Playwright is not a repo dependency — install it in a temp
+  dir when needed, never into this project.
 
 ## SEO — do not regress these
 

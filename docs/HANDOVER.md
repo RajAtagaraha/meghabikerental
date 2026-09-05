@@ -94,40 +94,28 @@ Tapping "Check availability" on a vehicle card scrolls to this form and
 preselects that vehicle. The floating green button is still a direct chat for
 people who just want to ask a question.
 
-### 2b. Pick a theme, then lock it in
+### 2b. The theme is locked in
 
-The site ships with a **theme picker** — the "Theme" button below the header on
-every page. Open it and try the six palettes and three finishes. Your choice is
-saved in your own browser only; visitors always see the default.
+The site uses the **Carbon & Racing Red** palette with the **Water** finish:
+near-black surfaces, a racing-red accent, frosted cards over a soft red glow.
 
-**12 palettes** — Sand & Terracotta · Ivory & Ink · Glacier & Ice ·
-Steel & Electric · Obsidian & Copper · Espresso & Cream ·
-Midnight & Champagne · Burgundy & Brass · Carbon & Racing Red ·
-Gunmetal & Chrome · Deep Water · Dusk & Coral.
+It is set on one line at the top of `index.html`, `terms.html` and
+`privacy.html`:
 
-**5 finishes** — Matte (solid surfaces) · Crystal (frosted glass, specular
-sheen) · Water (fluid tint, light drifts across a card on hover) · Metal
-(brushed panels, bevelled top edge) · Vapour (soft diffused glow, no borders).
+```html
+<html lang="en-IN" data-palette="carbon" data-finish="water">
+```
 
-That is 60 combinations. All 60 are verified to render.
+To restyle the entire site later, change those two words in those three files.
+Nothing else. The available options are listed at the top of
+`assets/css/themes.css`:
 
-The panel prints the exact combination at the bottom, e.g.
-`data-palette="obsidian"  data-finish="crystal"`.
+- **Palettes:** sand · ivory · glacier · steel · obsidian · espresso ·
+  midnight · burgundy · carbon · gunmetal · abyss · dusk
+- **Finishes:** matte · crystal · water · metal · vapour
 
-**Locking it in — three steps:**
-
-1. In `assets/js/theme.js`, set `PICKER_DEFAULT` to your chosen combination.
-   Test in a private window: with no saved choice, that is what loads.
-2. Add the attributes to the `<html>` tag of `index.html`, `terms.html` and
-   `privacy.html` so the theme is correct even before JavaScript runs:
-   `<html lang="en-IN" data-palette="obsidian" data-finish="crystal">`
-3. **Delete the picker before handover.** Remove `assets/js/theme.js`, its
-   `<script>` tag and the no-flash inline snippet from all three pages, and
-   delete section 4 ("Theme picker") from `assets/css/themes.css`. Keep
-   `themes.css` itself — it holds the palette your site now uses.
-
-Leaving the picker live means customers can recolour your website, so do not
-skip step 3.
+The theme picker used during design has been removed, so visitors cannot change
+the site's appearance.
 
 ### 3. Fill in the TBD items
 
